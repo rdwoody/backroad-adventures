@@ -44,7 +44,7 @@ export function MapView({ places, mapboxToken }: MapViewProps) {
 
         // Add markers for each place
         places.forEach((place) => {
-          if (place.latitude && place.longitude) {
+          if (place.latitude != null && place.longitude != null) {
             const category = CATEGORIES.find(c => c.id === place.category);
             
             const el = document.createElement('div');
@@ -59,10 +59,12 @@ export function MapView({ places, mapboxToken }: MapViewProps) {
 
             el.addEventListener('click', () => {
               setSelectedPlace(place);
-              map.flyTo({
-                center: [place.longitude, place.latitude],
-                zoom: 12,
-              });
+              if (place.latitude != null && place.longitude != null) {
+                map.flyTo({
+                  center: [place.longitude, place.latitude],
+                  zoom: 12,
+                });
+              }
             });
           }
         });
