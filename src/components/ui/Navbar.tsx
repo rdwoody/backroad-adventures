@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Map, Compass, Plus, User } from 'lucide-react';
+import { Map, Compass, Plus, User, Heart, Info, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 export function Navbar() {
@@ -20,7 +20,7 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <Link
               href="/explore"
               className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -30,7 +30,19 @@ export function Navbar() {
               }`}
             >
               <Map className="w-4 h-4" />
-              <span>Explore</span>
+              <span className="hidden md:inline">Explore</span>
+            </Link>
+
+            <Link
+              href="/favorites"
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive('/favorites')
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <Heart className="w-4 h-4" />
+              <span className="hidden md:inline">Favorites</span>
             </Link>
 
             <Link
@@ -42,7 +54,31 @@ export function Navbar() {
               }`}
             >
               <Plus className="w-4 h-4" />
-              <span>Submit</span>
+              <span className="hidden md:inline">Submit</span>
+            </Link>
+
+            <Link
+              href="/about"
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive('/about')
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <Info className="w-4 h-4" />
+              <span className="hidden md:inline">About</span>
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive('/contact')
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              <Mail className="w-4 h-4" />
+              <span className="hidden md:inline">Contact</span>
             </Link>
 
             <Link
@@ -54,7 +90,7 @@ export function Navbar() {
               }`}
             >
               <User className="w-4 h-4" />
-              <span>Admin</span>
+              <span className="hidden md:inline">Admin</span>
             </Link>
           </div>
         </div>

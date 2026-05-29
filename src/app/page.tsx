@@ -1,6 +1,7 @@
 import { getFeaturedPlaces } from '@/lib/places';
 import { PlaceCard } from '@/components/places/PlaceCard';
 import { MapView } from '@/components/map/MapView';
+import { Newsletter } from '@/components/ui/Newsletter';
 import Link from 'next/link';
 import { Compass, ArrowRight, Map, Play } from 'lucide-react';
 
@@ -82,6 +83,13 @@ export default async function Home() {
               <PlaceCard key={place.id} place={place} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto px-4">
+          <Newsletter />
         </div>
       </section>
 

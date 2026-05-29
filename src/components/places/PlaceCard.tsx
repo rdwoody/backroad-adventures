@@ -2,7 +2,9 @@
 
 import { Place, CATEGORIES } from '@/types';
 import Link from 'next/link';
-import { MapPin, Star, Play } from 'lucide-react';
+import { MapPin, Play } from 'lucide-react';
+import { FavoriteButton } from './FavoriteButton';
+import { Rating } from './Rating';
 
 interface PlaceCardProps {
   place: Place;
@@ -33,16 +35,17 @@ export function PlaceCard({ place }: PlaceCardProps) {
       )}
       <div className="p-4">
         <div className="flex items-start justify-between mb-2">
-          <div>
+          <div className="flex flex-wrap gap-2">
             <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium text-white ${category.color}`}>
               {category.name}
             </span>
             {place.is_featured && (
-              <span className="ml-2 inline-block px-2 py-1 rounded-full text-xs font-medium text-amber-700 bg-amber-100">
+              <span className="inline-block px-2 py-1 rounded-full text-xs font-medium text-amber-700 bg-amber-100">
                 Featured
               </span>
             )}
           </div>
+          <FavoriteButton placeId={place.id} size="sm" />
         </div>
         
         <Link href={`/place/${place.id}`}>
@@ -57,6 +60,10 @@ export function PlaceCard({ place }: PlaceCardProps) {
             {place.city}, {place.state}
           </p>
         )}
+        
+        <div className="mb-2">
+          <Rating placeId={place.id} size="sm" readonly />
+        </div>
         
         {place.description && (
           <p className="text-sm text-gray-700 line-clamp-2">
