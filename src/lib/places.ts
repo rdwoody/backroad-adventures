@@ -1,6 +1,5 @@
 import { Place, PlaceFormData } from '@/types';
-export { PlaceFormData };
-export type { Place };
+export type { Place, PlaceFormData };
 
 // Mock data for development - replace with Supabase queries later
 export const MOCK_PLACES: Place[] = [
