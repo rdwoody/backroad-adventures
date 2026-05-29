@@ -36,9 +36,7 @@ function ExploreContent() {
     return matchesCategory && matchesSearch;
   });
 
-  const mapboxToken = typeof window !== 'undefined' 
-    ? (window as any).__NEXT_DATA__?.props?.pageProps?.mapboxToken 
-    : null || process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
